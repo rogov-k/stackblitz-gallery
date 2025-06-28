@@ -1,17 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { RouterLink, provideRouter } from '@angular/router';
+import { routes } from './router';
+import { RouterOutlet } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { StoreModule, provideStore } from '@ngrx/store';
+import { mainReducer } from './store/reducer';
 
 @Component({
   selector: 'app-root',
   template: `
-    <h1>Hello from {{ name }}!</h1>
-    <a target="_blank" href="https://angular.dev/overview">
-      Learn more about Angular
-    </a>
-  `,
+  <ul>
+    <li><a routerLink="">Gallery</a></li>
+    <li><a routerLink="favorites">Favorites</a></li>
+    <li><a routerLink="photos/1231">photo 1</a></li>
+  </ul>
+  <router-outlet />`,
+  imports: [RouterOutlet, RouterLink],
 })
-export class App {
-  name = 'Angular';
-}
+export class App {}
 
-bootstrapApplication(App);
+bootstrapApplication(App, {
+  providers: [
+    provideHttpClient(),
+    provideRouter(routes),
+    // importProvidersFrom(StoreModule.forRoot({})),
+    // importProvidersFrom(StoreModule.forFeature('main', mainReducer)),
+    provideStore({main: mainReducer})
+  ]
+});
