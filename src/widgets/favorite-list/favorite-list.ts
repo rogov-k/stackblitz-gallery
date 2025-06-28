@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-favorite-list',
   imports: [],
   templateUrl: './favorite-list.html',
-  styleUrl: './favorite-list.css'
+  styleUrl: './favorite-list.scss'
 })
 export class FavoriteList {
 

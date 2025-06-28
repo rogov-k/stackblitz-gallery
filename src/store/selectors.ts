@@ -14,3 +14,10 @@ export const selectCurrentPage = createSelector(
     selectFeature,
     (state: IState) => state.currentPage,
 );
+
+export const selectPhotoList = createSelector(
+    selectFeature,
+    (state: IState) => {
+      return state.pages.map(page => page.data).flat();
+    },
+);

@@ -4,7 +4,7 @@ import { Observable, firstValueFrom, take } from "rxjs";
 import { Photo } from "../domain/interfaces/photo";
 import { IState } from "../store/reducer";
 import { Page } from "../domain/interfaces/page";
-import { selectCurrentPage, selectPages } from "../store/selectors";
+import { selectCurrentPage, selectPages, selectPhotoList } from "../store/selectors";
 import { addPage } from "../store/actions";
 
 @Injectable({
@@ -19,6 +19,10 @@ import { addPage } from "../store/actions";
 
     public getList$(): Observable<any> {
       return this.store.select(selectPages);
+    }
+
+    public getPhotoList$(): Observable<Photo[]> {
+      return this.store.select(selectPhotoList);
     }
 
     public getCurrentPage(): Promise<number> {

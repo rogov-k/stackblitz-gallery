@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    mat-toolbar {
+        display: flex;
+        flex-shrink: 0;
+
+        button {
+            &.active {
+                background: color-mix(in srgb, var(--mat-sys-primary) 10%, transparent);
+            }
+        }
+    }
+
+    .content {
+        flex: 1;
+        overflow: auto;
+    }
+}
