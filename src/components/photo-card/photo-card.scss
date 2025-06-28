@@ -1,0 +1,26 @@
+$content_height: 128px;
+
+mat-card {
+    overflow: hidden;
+    cursor: pointer;
+
+    mat-card-content {
+        justify-content: end;
+        display: flex;
+        flex-direction: column;
+        height: $content_height;
+        padding: 0 32px 16px 32px;
+        margin-top: -$content_height;
+        z-index: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0), rgba(0, 0, 0, 0));
+        position: relative;
+        user-select: none;
+    
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+        }
+    }
+}

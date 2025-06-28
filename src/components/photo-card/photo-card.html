@@ -1,12 +1,13 @@
-<mat-card appearance="outlined">
-    <mat-card-header>
-        <mat-card-title>{{ photo().author }}</mat-card-title>
-    </mat-card-header>
+<mat-card appearance="outlined" (click)="clickCard.emit(photo().id)">
     <img mat-card-image [src]="photo().download_url" loading="lazy">
-    <mat-card-content></mat-card-content>
-    <mat-card-actions>
-        <button matFab>
-          <mat-icon>favorite</mat-icon>
-        </button>
-    </mat-card-actions>
+    <mat-card-content>
+        <div class="content">
+            <div class="author">{{ photo().author }}</div>
+            @if (photo().isFavorite) {
+                <span class="material-symbols-outlined">
+                    favorite
+                </span>
+            }
+        </div>
+    </mat-card-content>
   </mat-card>

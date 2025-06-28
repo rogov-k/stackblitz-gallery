@@ -1,1 +1,1 @@
-<app-photo-list [photoList]="(photoList$ | async) || []"/>
+<app-photo-list [photoList]="(photoList$ | async) || []" (clickCard)="onClickCard($event)"/>

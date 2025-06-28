@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    app-photo-card {
+        min-width: 300px;
+        max-width: 450px;
+    }
+}

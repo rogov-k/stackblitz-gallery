@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Photo } from '../../domain/interfaces/photo';
 import { PhotoCard } from '../photo-card/photo-card';
 
@@ -10,4 +10,6 @@ import { PhotoCard } from '../photo-card/photo-card';
 })
 export class PhotoList {
   public photoList = input.required<Photo[]>();
+  
+  public clickCard = output<string>();
 }

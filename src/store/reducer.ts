@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { addPage } from './actions';
+import { addPage, addToFavorite, removeFromFavorite } from './actions';
 import { Photo } from '../domain/interfaces/photo';
 import { Page } from '../domain/interfaces/page';
 
@@ -27,6 +27,30 @@ export const _mainReducer = createReducer(
         } 
       ],
     };
+  }),
+  on(addToFavorite, (state, payload)=> {
+    return {
+      ...state,
+      pages: state.pages.map(page => ({
+        ...page,
+        data: page.data.map(photo => ({
+          ...photo,
+          isFavorite: photo.id === payload.id ? true : photo.isFavorite
+        }))
+      })),
+    }
+  }),
+  on(removeFromFavorite, (state, payload)=> {
+    return {
+      ...state,
+      pages: state.pages.map(page => ({
+        ...page,
+        data: page.data.map(photo => ({
+          ...photo,
+          isFavorite: photo.id === payload.id ? false : photo.isFavorite
+        }))
+      })),
+    }
   }),
 );
 
