@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Photo, PhotoExternal } from '../domain/interfaces/photo';
 import { firstValueFrom } from 'rxjs';
+import { IPhotoRepository } from '../domain/interfaces/repositories';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PhotoRepository {
+export class PhotoRepository implements IPhotoRepository {
   constructor(private readonly http: HttpClient) { }
 
   public getPhoto(id: string): Promise<Photo> {

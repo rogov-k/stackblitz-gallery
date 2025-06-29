@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
+import { IFavoriteRepository } from "../domain/interfaces/repositories";
 
 const FAVORITE_KEY = 'YOUR_FAVORITE_IMAGES';
 
 @Injectable({
     providedIn: 'root'
 })
-export class FavoriteRepository {
+export class FavoriteRepository implements IFavoriteRepository {
     public addToFavorite(id: string): void {
         const stateJson = window.localStorage.getItem(FAVORITE_KEY) || '[]';
         const state = JSON.parse(stateJson) as string[];

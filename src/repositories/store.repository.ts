@@ -7,7 +7,7 @@ import { selectCurrentPage, selectFavoritePhotoList, selectIsLoading, selectPhot
 import { addPage, addToFavorite, removeFromFavorite, setIsLoading, storeFavotirePhotos } from "../store/actions";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class StoreRepository {
   constructor(private store: Store<IState>) {}
