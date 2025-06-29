@@ -1,5 +1,5 @@
 <mat-card appearance="outlined" (click)="clickCard.emit(photo().id)">
-    <img mat-card-image [src]="photo().download_url" loading="lazy">
+    <img mat-card-image [src]="photoUrl()" loading="lazy">
     <mat-card-content>
         <div class="content">
             <div class="author">{{ photo().author }}</div>

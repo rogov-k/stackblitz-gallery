@@ -10,7 +10,7 @@ export interface IState {
 
 export const initialState: IState = {
   photos: [],
-  currentPage: 0,
+  currentPage: 1,
   isLoading: false,
 };
 

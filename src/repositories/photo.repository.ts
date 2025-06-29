@@ -21,8 +21,8 @@ export class PhotoRepository {
     return {
       id: data.id,
       author: data.author,
-      url: data.url,
-      download_url: data.download_url,
+      fullSizeUrl: data.download_url,
+      smallSizeUrls: `https://picsum.photos/id/${data.id}/450/250`,
       isFavorite: false,
     }
   }
