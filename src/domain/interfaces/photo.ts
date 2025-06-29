@@ -10,6 +10,7 @@ export interface PhotoExternal {
 export interface Photo {
     id: string;
     author: string;
+    url: string;
     download_url: string;
     isFavorite: boolean;
 }

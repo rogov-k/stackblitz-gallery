@@ -4,6 +4,10 @@ mat-card {
     overflow: hidden;
     cursor: pointer;
 
+    img {
+        aspect-ratio: 16 / 9;
+    }
+
     mat-card-content {
         justify-content: end;
         display: flex;

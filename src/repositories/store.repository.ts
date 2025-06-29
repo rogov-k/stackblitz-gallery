@@ -3,8 +3,8 @@ import { Store } from "@ngrx/store";
 import { Observable, firstValueFrom, take } from "rxjs";
 import { Photo } from "../domain/interfaces/photo";
 import { IState } from "../store/reducer";
-import { selectCurrentPage, selectPhotoList } from "../store/selectors";
-import { addPage, addToFavorite, removeFromFavorite } from "../store/actions";
+import { selectCurrentPage, selectIsLoading, selectPhotoList } from "../store/selectors";
+import { addPage, addToFavorite, removeFromFavorite, setIsLoading } from "../store/actions";
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +18,14 @@ export class StoreRepository {
 
   public getPhotoList(): Promise<Photo[]> {
     return firstValueFrom(this.store.select(selectPhotoList).pipe(take(1)));
+  }
+
+  public getIsLoading$(): Observable<boolean> {
+    return this.store.select(selectIsLoading);
+  }
+
+  public getIsLoading(): Promise<boolean> {
+    return firstValueFrom(this.store.select(selectIsLoading).pipe(take(1)));
   }
 
   public getCurrentPage(): Promise<number> {
@@ -34,5 +42,9 @@ export class StoreRepository {
 
   public removeFromFavorite(id: string): void {
     this.store.dispatch(removeFromFavorite({id}));
+  }
+
+  public setIsLoading(isLoading: boolean): void {
+    this.store.dispatch(setIsLoading({isLoading}));
   }
 }

@@ -5,19 +5,17 @@ import { IState } from './reducer';
 
 export const selectFeature = createFeatureSelector<IState>('main');
 
-export const selectPages = createSelector(
-    selectFeature,
-    (state: IState) => state.pages
-  );
-
 export const selectCurrentPage = createSelector(
-    selectFeature,
-    (state: IState) => state.currentPage,
+  selectFeature,
+  (state: IState) => state.currentPage,
 );
 
 export const selectPhotoList = createSelector(
-    selectFeature,
-    (state: IState) => {
-      return state.pages.map(page => page.data).flat();
-    },
+  selectFeature,
+  (state: IState) => state.photos,
+);
+
+export const selectIsLoading = createSelector(
+  selectFeature,
+  (state: IState) => state.isLoading,
 );

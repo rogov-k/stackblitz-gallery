@@ -21,6 +21,7 @@ export class PhotoRepository {
     return {
       id: data.id,
       author: data.author,
+      url: data.url,
       download_url: data.download_url,
       isFavorite: false,
     }

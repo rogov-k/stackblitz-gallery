@@ -1,0 +1,11 @@
+:host {
+    display: block;
+    height: 100%;
+    overflow: auto;
+    padding: 20px 50px;
+    box-sizing: border-box;
+
+    mat-progress-bar {
+        margin-top: 24px;
+    }
+}

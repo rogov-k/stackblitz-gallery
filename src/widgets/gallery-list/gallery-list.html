@@ -1,1 +1,8 @@
-<app-photo-list [photoList]="(photoList$ | async) || []" (clickCard)="onClickCard($event)"/>
+<app-photo-list
+ [photoList]="(photoList$ | async) || []"
+ (clickCard)="onClickCard($event)"
+/>
+
+@if (isLoading$ | async) {
+    <mat-progress-bar mode="query"/>
+}

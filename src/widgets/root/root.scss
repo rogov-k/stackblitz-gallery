@@ -15,8 +15,6 @@
     }
 
     .content {
-        flex: 1;
-        overflow: auto;
-        padding: 20px 50px;
+        height: calc(100% - var(--mat-toolbar-standard-height, 64px));
     }
 }

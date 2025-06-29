@@ -7,7 +7,7 @@ import { FavoriteRepository } from "../../repositories/favorite.repository";
 @Injectable({
     providedIn: 'root'
 })
-export class LoadPageUseCase implements UseCase {
+export class LoadPhotosUseCase implements UseCase {
     constructor(
         private readonly storeRepository: StoreRepository,
         private readonly photoRepository: PhotoRepository,
@@ -15,6 +15,9 @@ export class LoadPageUseCase implements UseCase {
     ) {}
 
     public async invoke() {
+        this.storeRepository.setIsLoading(true);
+        // Add specific delay for displaying loader
+        await new Promise(resolve => setTimeout(resolve, 1_000));
         const currentPage = await this.storeRepository.getCurrentPage();
         const photos = await this.photoRepository.getList(currentPage);
         const favoritesIdList = this.favoriteRepository.getFavoriteIdList();
@@ -23,5 +26,6 @@ export class LoadPageUseCase implements UseCase {
             isFavorite: favoritesIdList.includes(photo.id),
         }))
         this.storeRepository.addPage(currentPage, markedAsFavoritePhotoList);
+        this.storeRepository.setIsLoading(false);
     }
 }
