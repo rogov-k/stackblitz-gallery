@@ -14,7 +14,7 @@ export class LoadPhotosUseCase implements UseCase {
         private readonly favoriteRepository: FavoriteRepository,
     ) {}
 
-    public async invoke() {
+    public async invoke(): Promise<void> {
         this.storeRepository.setIsLoading(true);
         // Add specific delay for displaying loader
         await new Promise(resolve => setTimeout(resolve, 1_000));

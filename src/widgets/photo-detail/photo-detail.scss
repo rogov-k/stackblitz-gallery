@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+    overflow: auto;
+    padding: 20px 50px;
+    box-sizing: border-box;
+
+    button {
+        min-height: 40px;
+    }
+}

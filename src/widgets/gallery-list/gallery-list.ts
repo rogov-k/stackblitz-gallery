@@ -4,9 +4,9 @@ import { PhotoList } from '../../components/photo-list/photo-list';
 import { Observable } from 'rxjs';
 import { Photo } from '../../domain/interfaces/photo';
 import { CommonModule } from '@angular/common';
-import { FavoriteUseCase } from '../../use-cases/favotire/favorite.use-case';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoadPhotosUseCase } from '../../use-cases/load-photos/load-photos.use-case';
+import { ManageFavoriteUseCase } from '../../use-cases/manage-favorite/manage-favorite.use-case';
 
 @Component({
   selector: 'app-gallery-list',
@@ -40,12 +40,12 @@ export class GalleryList {
     private readonly elementRef: ElementRef,
     private readonly loadPhotosUseCase: LoadPhotosUseCase,
     private readonly storeRepository: StoreRepository,
-    private readonly favoriteUseCase: FavoriteUseCase,
+    private readonly manageFavoriteUseCase: ManageFavoriteUseCase,
   ) {
     this.loadPhotosUseCase.invoke();
   }
 
   public onClickCard(id: string): void {
-    this.favoriteUseCase.invoke(id);
+    this.manageFavoriteUseCase.invoke(id);
   }
 }

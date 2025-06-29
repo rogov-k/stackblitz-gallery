@@ -1,6 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Page } from '../domain/interfaces/page';
-import { Photo } from '../domain/interfaces/photo';
 import { IState } from './reducer';
 
 export const selectFeature = createFeatureSelector<IState>('main');
@@ -12,7 +10,12 @@ export const selectCurrentPage = createSelector(
 
 export const selectPhotoList = createSelector(
   selectFeature,
-  (state: IState) => state.photos,
+  (state: IState) => state.photoList,
+);
+
+export const selectFavoritePhotoList = createSelector(
+  selectFeature,
+  (state: IState) => state.favotirePhotoList,
 );
 
 export const selectIsLoading = createSelector(

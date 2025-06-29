@@ -1,1 +1,9 @@
-<p>photo-detail works!</p>
+@if (photo) {
+    <app-photo-card [photo]="photo"/>
+    
+    @if (photo.isFavorite) {
+        <button matButton="outlined" (click)="onClickRemove()">Remove from favorite</button>
+    } @else {
+        <button matButton="outlined" (click)="onClickAdd()">Add to favorite</button>
+    }
+}

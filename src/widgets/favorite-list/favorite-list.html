@@ -1,1 +1,4 @@
-<p>favorite-list works!</p>
+<app-photo-list
+ [photoList]="(photoList$ | async) || []"
+ (clickCard)="onClickCard($event)"
+/>

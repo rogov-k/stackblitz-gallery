@@ -9,6 +9,11 @@ import { firstValueFrom } from 'rxjs';
 export class PhotoRepository {
   constructor(private readonly http: HttpClient) { }
 
+  public getPhoto(id: string): Promise<Photo> {
+    return firstValueFrom(this.http.get<PhotoExternal>(`https://picsum.photos/id/${id}/info`))
+    .then(data => PhotoRepository.mapPhotoToDomain(data));
+  }
+
   public getList(page: number, limit: number = 20): Promise<Photo[]> {
     return firstValueFrom(this.http.get<PhotoExternal[]>('https://picsum.photos/v2/list', {params: {
       page, 
